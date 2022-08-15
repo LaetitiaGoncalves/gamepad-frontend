@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+body {
+    background-color: black;
+    font-family: 'Exo', sans-serif;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* Header */
+
+header {
+    background-color: #1F2023;
+    
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-contain {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 50px 16px 50px;
+    align-items: center;
+    border-bottom: #FF4655 solid 2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header p {
+color: white;
+font-weight: 500;
+font-size: 20px;
+margin-right: 40px;
+}
+
+header button {
+    background-color:#FF4655;
+    border-radius: 8px;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 20px;
+    color: white;
+    font-family: 'Exo', sans-serif;
+}
+
+/* HOMEPAGE */
+
+.logo-and-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-and-search img {
+    width: 540px;
+    margin-top: 50px;
+}
+
+.form-contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+
+.logo-and-search form {
+    color: #555;
+    display: flex;
+    padding: 2px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    margin: 0 0 30px;
+    background-color: white;
+    width: 490px;
+    justify-content: space-between;
+    
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .logo-and-search input[type="search"] {
+    border: none;
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  flex: 1;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .logo-and-search input[type="search"]::placeholder {
+    color: #6F6F6F;
+    font-family: 'Exo', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
   }
-}
+  
+
+.logo-and-search button[type="submit"] {
+    text-indent: -999px;
+    overflow: hidden;
+    width: 40px;
+    padding: 0;
+    margin: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: transparent url("./img/loupe.svg") no-repeat center;
+    cursor: pointer;
+    position: relative;
+    left: 0px;
+    top: 0px
+    
+  }
+
+  .logo-and-search input[type="search"]:focus {
+    box-shadow: none;
+    border-color: none;
+    outline: none;
+  }
