@@ -34,6 +34,10 @@ font-size: 20px;
 margin-right: 40px;
 }
 
+header a {
+text-decoration: none;
+}
+
 header button {
     background-color:#FF4655;
     border-radius: 8px;
@@ -42,6 +46,7 @@ header button {
     font-size: 20px;
     color: white;
     font-family: 'Exo', sans-serif;
+    border: none;
 }
 
 /* HOMEPAGE */
@@ -53,9 +58,21 @@ header button {
     justify-content: center;
 }
 
-.logo-and-search img {
-    width: 540px;
-    margin-top: 50px;
+.symbol-and-title {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.symbol-and-title img {
+    width: 75px;
+}
+
+h1 {
+    color: white;
+    font-size: 100px;
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.25);
+    font-weight: 400;
 }
 
 .form-contain {
@@ -73,7 +90,7 @@ header button {
     padding: 2px;
     border: 1px solid currentColor;
     border-radius: 5px;
-    margin: 0 0 30px;
+    margin: 20px 0 30px;
     background-color: white;
     width: 490px;
     justify-content: space-between;
@@ -121,4 +138,79 @@ header button {
     box-shadow: none;
     border-color: none;
     outline: none;
+  }
+
+  .logo-and-search p {
+    color: white;
+    font-size: 19px;
+    font-weight: 400;
+  }
+
+  .games-contain h2 {
+    color: white;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 82px;
+    margin-top: 45px;
+    margin-bottom: 25px;
+
+  }
+
+  /* card game */
+.card-game {
+    display: flex;
+    flex-wrap: wrap;
+   width: 100%;
+   justify-content: space-between;
+ 
+}
+
+  .card-game h3 {
+    color: white;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 700;
+    padding: 0px 20px;
+  }
+
+.game-card {
+    width: 350px;
+    background-color: #323232;
+    border-radius: 10px;
+    margin: 10px 0 20px 0;
+    
+}
+
+  .game-card > img {
+    width: 350px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+
+  }
+
+  .game-infos {
+    background-color: #323232;
+    padding: 10px 20px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+
+  .platform p {
+    color: white;
+  }
+
+  .platform img {
+    width: 20px;
+    height: 20px;
+    margin: 10px 10px 10px 0px;
+
+  }
+
+  .metascore {
+    color: #6CC848;
+    border: 1px solid #6CC848;
+    padding: 5px 5px;
   }
