@@ -1,6 +1,7 @@
 body {
     background-color: black;
     font-family: 'Exo', sans-serif;
+    color: white;
 }
 .container {
     max-width: 1200px;
