@@ -170,7 +170,7 @@ h1 {
     font-size: 24px;
     line-height: 28px;
     font-weight: 700;
-    padding: 0px 20px;
+    padding: 0px 20px 20px 10px;
   }
 
 .game-card {
@@ -214,3 +214,35 @@ h1 {
     border: 1px solid #6CC848;
     padding: 5px 5px;
   }
+.card-opened {
+    padding: 0px 10px 0px 10px;
+}
+
+
+  .card-opened div:first-child {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #797979;
+   
+  }
+
+  .genres{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding-bottom: 20px;
+  }
+
+.genres > div {
+    display: flex;
+}
+
+.genres p:not(:last-child) {
+    padding-right: 6px;
+}
+
+.genres > div p:not(:last-child):after{
+    content: ",";
+}
