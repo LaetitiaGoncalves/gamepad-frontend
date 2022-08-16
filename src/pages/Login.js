@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import upload from "../img/upload.svg";
 
-const Signup = () => {
+const Login = () => {
   return (
     <div className="container signupPage">
       <div className="contain-card">
@@ -32,32 +31,18 @@ const Signup = () => {
             <p>Leave a review for a game</p>
           </div>
         </div>
-        <div className="signup-card">
-          <h1>Sign Up</h1>
+        <div className="signup-card login-card">
+          <h1>Login</h1>
           <form>
-            <input type="text" placeholder="Username" />
             <input type="email" placeholder="Email" />
             <input type="password" name="" id="" placeholder="Password" />
-            <input
-              type="password"
-              name=""
-              id=""
-              placeholder="Confirm Password"
-            />
-            <div className="addPhoto">
-              <label>
-                <input type="file" style={{ display: "none" }} />
-                Add a Photo
-                <img src={upload} alt="upload icon" />
-              </label>
-              <p>No file selected</p>
-            </div>
             <div className="connexion">
               <label>
                 <input type="submit" style={{ display: "none" }} />
                 Connexion
               </label>
             </div>
+            <button>Don’t have an account yet ?</button>
           </form>
         </div>
       </div>
@@ -65,4 +50,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

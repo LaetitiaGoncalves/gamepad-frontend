@@ -1,5 +1,4 @@
 import symbol from "../img/symbol-logo.svg";
-import { Link } from "react-router-dom";
 import GameCard from "../components/GameCard";
 
 const Home = () => {

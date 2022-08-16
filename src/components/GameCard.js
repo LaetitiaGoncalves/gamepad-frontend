@@ -5,16 +5,18 @@ import playstation from "../img/playstation-logotype.svg";
 import xbox from "../img/xbox-logo.svg";
 import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const GameCard = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
       const fetchDatas = async () => {
-        const response = await axios.get("http://localhost:3000/home");
+        const response = await axios.get("http://localhost:3000/game");
         setData(response.data);
         setIsLoading(false);
       };
@@ -29,14 +31,18 @@ const GameCard = () => {
       {isLoading === true ? (
         <h2>En cours de chargment</h2>
       ) : (
-        <div
-          className="card-game"
-          onMouseEnter={() => setIsShown(true)}
-          onMouseLeave={() => setIsShown(false)}
-        >
+        <div className="card-game">
           {data.results.map((games) => {
             return (
-              <div className="game-card">
+              <div
+                className="game-card"
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() => setIsShown(false)}
+                onClick={(event) => {
+                  event.preventDefault();
+                  navigate(`/game/${games.id}`);
+                }}
+              >
                 <img src={games.background_image} alt="" />
                 <div className="game-infos">
                   <div className="platform">
@@ -58,7 +64,7 @@ const GameCard = () => {
                       } else if (platform.platform.name === "Linux") {
                         return <img src={linux} alt="linux logo" />;
                       }
-                      return console.log(platform.platform.name);
+                      return;
                     })}
                   </div>
                   <div>

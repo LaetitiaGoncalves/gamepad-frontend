@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <header>
       <div className="container header-contain">
-        <img src={logo} alt="logo de Gamepad" className="logo-header" />
+        <Link to="/">
+          <img src={logo} alt="logo de Gamepad" className="logo-header" />
+        </Link>
         <div className="header-links">
           <Link to="/collection">
             <p>My collection</p>
