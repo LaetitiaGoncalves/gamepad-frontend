@@ -413,6 +413,53 @@ text-decoration: underline;
 .login-card h1 {
     margin-top: 100px;
 }
+
+/* Game */
+
+.game-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-page h1 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+
+}
+
+.about-game img {
+    width: 565px;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.about-game {
+    display: flex;
+}
+
+.buttons-game {
+    display: flex;
+}
+
+.infos-game {
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Footer */
 
 footer {
