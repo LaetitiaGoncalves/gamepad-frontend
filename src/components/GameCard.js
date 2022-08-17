@@ -8,7 +8,7 @@ import linux from "../img/linux-logo.svg";
 import { useNavigate } from "react-router-dom";
 
 const GameCard = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const GameCard = () => {
         <h2>En cours de chargment</h2>
       ) : (
         <div className="card-game">
-          {data.results.map((games) => {
+          {data.results.map((games, index) => {
             return (
               <div
                 className="game-card"
@@ -46,9 +46,15 @@ const GameCard = () => {
                 <img src={games.background_image} alt="" />
                 <div className="game-infos">
                   <div className="platform">
-                    {games.platforms.map((platform) => {
+                    {games.platforms.map((platform, index) => {
                       if (platform.platform.name === "PC") {
-                        return <img src={microsoft} alt="microsoft-logo" />;
+                        return (
+                          <img
+                            src={microsoft}
+                            alt="microsoft-logo"
+                            key={index}
+                          />
+                        );
                       } else if (
                         platform.platform.name ===
                         ("PlayStation 5" || "PlayStation 4" || "PlayStation")
@@ -64,7 +70,7 @@ const GameCard = () => {
                       } else if (platform.platform.name === "Linux") {
                         return <img src={linux} alt="linux logo" />;
                       }
-                      return;
+                      return console.log(platform);
                     })}
                   </div>
                   <div>
@@ -91,9 +97,12 @@ const GameCard = () => {
                         Genres :
                       </p>
                       <div>
-                        {games.genres.map((genre) => {
+                        {games.genres.map((genre, index) => {
                           return (
-                            <p style={{ color: "white", fontSize: "14px" }}>
+                            <p
+                              key={index}
+                              style={{ color: "white", fontSize: "14px" }}
+                            >
                               {genre.name}
                             </p>
                           );

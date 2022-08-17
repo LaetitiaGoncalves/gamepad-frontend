@@ -426,29 +426,129 @@ text-decoration: underline;
     font-weight: 400;
     font-size: 35px;
     margin-top: 70px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    text-shadow:none
 
+}
+
+.game-page h1:after {
+    content: "";
+    display: block;
+    width: 30%;
+    height: 8px;
+    background-color: #FF4655;
+    top: 28px;
+    position: absolute;
+    z-index: -1;
 }
 
 .about-game img {
     width: 565px;
     border-radius: 8px;
-    object-fit: contain;
+    object-fit: cover;
+    height: 360px;
+}
+
+.about-game > div:first-child {
+    margin-right: 25px;
+   
 }
 
 .about-game {
     display: flex;
+  
 }
-
-.buttons-game {
-    display: flex;
+.right-part-game {
+    width: 50%;
 }
 
 .infos-game {
     display: flex;
 }
 
+.gameInfo {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
 
+.gameInfo-title {
+    font-weight: 400;
+font-size: 15px;
+line-height: 21px;
+color: #676767;
+}
+
+.left-infos {
+    width: 50%;
+}
+
+.right-infos {
+    width: 50%;
+}
+
+.about-game p {
+    margin-bottom: 8px;
+}
+
+.buttons-game {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.buttons-game div {
+    background-color: transparent;
+    color: white;
+    padding: 6px 10px 6px 10px ;
+    border: 1px solid white;
+    border-radius: 8px;
+    font-family: 'Exo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    margin-bottom: 10px;
+
+}
+
+.buttons-game div p {
+    width: 75%;
+}
+
+.buttons-game div svg{
+    margin: 0px 10px;
+}
+
+.same-games h2 {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 35px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.same-games h2:after {
+    content: "";
+    display: block;
+    width: 30%;
+    height: 8px;
+    background-color: #FF4655;
+    top: 23px;
+    left: 23%;
+    position: absolute;
+    z-index: -1;
+}
 
 
 

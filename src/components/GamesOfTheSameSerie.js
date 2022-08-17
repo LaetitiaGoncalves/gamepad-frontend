@@ -4,6 +4,7 @@ import axios from "axios";
 
 const GamesOfTheSameSerie = () => {
   const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const GamesOfTheSameSerie = () => {
           `http://localhost:3000/samegames/${id}`
         );
         setData(response.data);
+        setIsLoading(false);
       };
       fetchDatas();
     } catch (error) {
@@ -22,14 +24,20 @@ const GamesOfTheSameSerie = () => {
 
   return (
     <div>
-      {data.results.map((games) => {
-        return (
-          <div>
-            <img src={games.background_image} alt="" />
-            <p key={games.id}>{games.name}</p>
-          </div>
-        );
-      })}
+      {isLoading === true ? (
+        <p>Encours de chargement</p>
+      ) : (
+        <div>
+          {data.results.map((games) => {
+            return (
+              <div>
+                <img src={games.background_image} alt="" />
+                <p key={games.id}>{games.name}</p>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

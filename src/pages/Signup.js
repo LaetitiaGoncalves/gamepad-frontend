@@ -55,7 +55,7 @@ const Signup = () => {
             <div className="connexion">
               <label>
                 <input type="submit" style={{ display: "none" }} />
-                Connexion
+                S'inscrire
               </label>
             </div>
           </form>
