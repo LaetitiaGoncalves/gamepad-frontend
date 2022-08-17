@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import microsoft from "../img/microsoft1.svg";
+import playstation from "../img/playstation-logotype.svg";
+import xbox from "../img/xbox-logo.svg";
+import nintendo from "../img/nintendo-switch.svg";
+import linux from "../img/linux-logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
@@ -59,13 +64,29 @@ const Game = () => {
               <div className="infos-game">
                 <div className="left-infos">
                   <p className="gameInfo-title">Platforms</p>
-                  {data.platforms.map((platform) => {
-                    return (
-                      <div>
-                        <p key={platform.id}>{platform.platform.name}</p>
-                      </div>
-                    );
-                  })}
+                  <div className="platform">
+                    {data.platforms.map((platform) => {
+                      if (platform.platform.name === "PC") {
+                        return <img src={microsoft} alt="microsoft-logo" />;
+                      } else if (
+                        platform.platform.name ===
+                        ("PlayStation 5" || "PlayStation 4" || "PlayStation")
+                      ) {
+                        return <img src={playstation} alt="playstation-logo" />;
+                      } else if (
+                        platform.platform.name ===
+                        ("Xbox One" || "Xbox Series S/X" || "Xbox")
+                      ) {
+                        return <img src={xbox} alt="xbox-logo" />;
+                      } else if (platform.platform.name === "Nintendo Switch") {
+                        return <img src={nintendo} alt="switch-logo" />;
+                      } else if (platform.platform.name === "Linux") {
+                        return <img src={linux} alt="linux logo" />;
+                      }
+                      return console.log(platform.name);
+                    })}
+                  </div>
+
                   <p className="gameInfo-title">Released date</p>
                   <p>{data.released}</p>
                   <p className="gameInfo-title">Publisher</p>

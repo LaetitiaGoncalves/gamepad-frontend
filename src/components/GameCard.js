@@ -48,13 +48,7 @@ const GameCard = () => {
                   <div className="platform">
                     {games.platforms.map((platform, index) => {
                       if (platform.platform.name === "PC") {
-                        return (
-                          <img
-                            src={microsoft}
-                            alt="microsoft-logo"
-                            key={index}
-                          />
-                        );
+                        return <img src={microsoft} alt="microsoft-logo" />;
                       } else if (
                         platform.platform.name ===
                         ("PlayStation 5" || "PlayStation 4" || "PlayStation")

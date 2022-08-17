@@ -27,12 +27,16 @@ const GamesOfTheSameSerie = () => {
       {isLoading === true ? (
         <p>Encours de chargement</p>
       ) : (
-        <div>
+        <div className="similar-games">
           {data.results.map((games) => {
             return (
               <div>
-                <img src={games.background_image} alt="" />
-                <p key={games.id}>{games.name}</p>
+                <div>
+                  <img src={games.background_image} alt="" />
+                </div>
+                <div className="background-similar-games">
+                  <p key={games.id}>{games.name}</p>
+                </div>
               </div>
             );
           })}
