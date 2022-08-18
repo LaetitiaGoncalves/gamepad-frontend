@@ -16,7 +16,9 @@ const GameCard = () => {
   useEffect(() => {
     try {
       const fetchDatas = async () => {
-        const response = await axios.get("http://localhost:3000/game");
+        const response = await axios.get(
+          "https://laetitia-gamepad-backend.herokuapp.com/game"
+        );
         setData(response.data);
         setIsLoading(false);
       };

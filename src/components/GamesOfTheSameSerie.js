@@ -11,7 +11,7 @@ const GamesOfTheSameSerie = () => {
     try {
       const fetchDatas = async () => {
         const response = await axios.get(
-          `http://localhost:3000/samegames/${id}`
+          `https://laetitia-gamepad-backend.herokuapp.com/samegames/${id}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -22,12 +22,12 @@ const GamesOfTheSameSerie = () => {
     }
   }, [id]);
 
-  return (
-    <div>
-      {isLoading === true ? (
-        <p>Encours de chargement</p>
-      ) : (
-        <div className="similar-games">
+  <div>
+    {isLoading === true ? (
+      <p>Encours de chargement</p>
+    ) : (
+      <div className="similar-games">
+        <div>
           {data.results.map((games) => {
             return (
               <div>
@@ -41,9 +41,9 @@ const GamesOfTheSameSerie = () => {
             );
           })}
         </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>;
 };
 
 export default GamesOfTheSameSerie;

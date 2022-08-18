@@ -430,14 +430,14 @@ text-decoration: underline;
     position: relative;
     z-index: 2;
     text-shadow:none;
-    max-width: 40%;
+    max-width: 60%;
 
 }
 
 .game-page h1:after {
     content: "";
     display: block;
-    width: 100%;
+    width: 30%;
     height: 8px;
     background-color: #FF4655;
     top: 25px;
@@ -474,6 +474,13 @@ text-decoration: underline;
     font-size: 15px;
     line-height: 21px;
     color: #FFFFFF;
+   
+}
+
+.genres-game-info {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
 }
 
 .gameInfo-title {
@@ -484,7 +491,7 @@ color: #676767;
 }
 
 .left-infos {
-    width: 50%;
+    width: 40%;
 }
 
 .right-infos {
@@ -493,6 +500,7 @@ color: #676767;
 
 .about-game p {
     margin-bottom: 8px;
+    margin-right: 5px;
 }
 
 .buttons-game {
@@ -541,17 +549,17 @@ color: #676767;
     position: relative;
     z-index: 2;
     margin: 40px auto;
-    max-width: 40%;
+    max-width: 60%;
 }
 
 .same-games h2:after {
     content: "";
     display: block;
-    width: 100%;
+    width: 60%;
     height: 8px;
     background-color: #FF4655;
     top: 23px;
-    left: 0%;
+    left: 20%;
     position: absolute;
     z-index: -1;
 }
@@ -580,6 +588,12 @@ color: #676767;
 
 .similar-games p {
     padding: 15px 10px;
+}
+
+.no-similar-games{
+    padding: 10px 0px 60px 0px;
+    text-align: center;
+    font-size: 24px;
 }
 
 .similar-games img {

@@ -20,7 +20,9 @@ const Game = () => {
   useEffect(() => {
     try {
       const fetchDatas = async () => {
-        const response = await axios.get(`http://localhost:3000/game/${id}`);
+        const response = await axios.get(
+          `https://laetitia-gamepad-backend.herokuapp.com/game/${id}`
+        );
         setData(response.data);
         setIsLoading(false);
       };
@@ -96,15 +98,16 @@ const Game = () => {
                 </div>
                 <div className="rigth-infos">
                   <p className="gameInfo-title">Genres</p>
-                  {data.genres.map((genre) => {
-                    return (
-                      <div>
+                  <div className="genres-game-info">
+                    {data.genres.map((genre) => {
+                      return (
                         <p key={genre.id} className="gameInfo">
                           {genre.name}
                         </p>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
+
                   <p className="gameInfo-title">Developer</p>
                   {data.developers.map((developer) => {
                     return <p key={developer.id}>{developer.name}</p>;
@@ -123,6 +126,7 @@ const Game = () => {
               </div>
             </div>
           </div>
+
           <div className="same-games">
             <h2>Games like {data.name}</h2>
             <div>
