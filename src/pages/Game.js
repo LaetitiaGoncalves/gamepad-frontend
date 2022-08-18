@@ -6,6 +6,8 @@ import playstation from "../img/playstation-logotype.svg";
 import xbox from "../img/xbox-logo.svg";
 import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
+import android from "../img/android-logo.svg";
+import apple from "../img/apple-logo.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
@@ -26,6 +28,9 @@ const Game = () => {
     Xbox: xbox,
     "Nintendo Switch": nintendo,
     Linux: linux,
+    "Apple Macintosh": apple,
+    iOS: apple,
+    Android: android,
   };
 
   useEffect(() => {
@@ -78,7 +83,7 @@ const Game = () => {
                 <div className="left-infos">
                   <p className="gameInfo-title">Platforms</p>
                   <div className="platform">
-                    {data.platforms.map((platform) => {
+                    {data.parent_platforms.map((platform) => {
                       return (
                         <img
                           src={logoPlatform[platform.platform.name]}

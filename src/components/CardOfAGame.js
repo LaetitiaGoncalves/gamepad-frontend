@@ -5,6 +5,8 @@ import playstation from "../img/playstation-logotype.svg";
 import xbox from "../img/xbox-logo.svg";
 import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
+import android from "../img/android-logo.svg";
+import apple from "../img/apple-logo.svg";
 import { useNavigate } from "react-router-dom";
 
 const CardOfAGame = ({ game }) => {
@@ -14,14 +16,13 @@ const CardOfAGame = ({ game }) => {
   const navigate = useNavigate();
   const logoPlatform = {
     PC: microsoft,
-    "PlayStation 5": playstation,
-    "PlayStation 4": playstation,
     PlayStation: playstation,
-    "Xbox One": xbox,
-    "Xbox Series S/X": xbox,
     Xbox: xbox,
-    "Nintendo Switch": nintendo,
+    Nintendo: nintendo,
     Linux: linux,
+    "Apple Macintosh": apple,
+    iOS: apple,
+    Android: android,
   };
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const CardOfAGame = ({ game }) => {
           <img src={game.background_image} alt="" />
           <div className="game-infos">
             <div className="platform">
-              {game.platforms.map((platform) => {
+              {game.parent_platforms.map((platform) => {
                 return (
                   <img
                     src={logoPlatform[platform.platform.name]}
