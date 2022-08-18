@@ -16,6 +16,17 @@ const Game = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const logoPlatform = {
+    PC: microsoft,
+    "PlayStation 5": playstation,
+    "PlayStation 4": playstation,
+    PlayStation: playstation,
+    "Xbox One": xbox,
+    "Xbox Series S/X": xbox,
+    Xbox: xbox,
+    "Nintendo Switch": nintendo,
+    Linux: linux,
+  };
 
   useEffect(() => {
     try {
@@ -48,7 +59,7 @@ const Game = () => {
               <div className="buttons-game">
                 <div>
                   <p>
-                    Save to <span style={{ color: "#6CC848" }}>Collection</span>{" "}
+                    Save to <span style={{ color: "#6CC848" }}>Collection</span>
                   </p>
                   <FontAwesomeIcon
                     icon="fa-regular fa-bookmark"
@@ -68,24 +79,12 @@ const Game = () => {
                   <p className="gameInfo-title">Platforms</p>
                   <div className="platform">
                     {data.platforms.map((platform) => {
-                      if (platform.platform.name === "PC") {
-                        return <img src={microsoft} alt="microsoft-logo" />;
-                      } else if (
-                        platform.platform.name ===
-                        ("PlayStation 5" || "PlayStation 4" || "PlayStation")
-                      ) {
-                        return <img src={playstation} alt="playstation-logo" />;
-                      } else if (
-                        platform.platform.name ===
-                        ("Xbox One" || "Xbox Series S/X" || "Xbox")
-                      ) {
-                        return <img src={xbox} alt="xbox-logo" />;
-                      } else if (platform.platform.name === "Nintendo Switch") {
-                        return <img src={nintendo} alt="switch-logo" />;
-                      } else if (platform.platform.name === "Linux") {
-                        return <img src={linux} alt="linux logo" />;
-                      }
-                      return console.log(platform.name);
+                      return (
+                        <img
+                          src={logoPlatform[platform.platform.name]}
+                          alt={platform.platform.name}
+                        />
+                      );
                     })}
                   </div>
 
@@ -113,7 +112,7 @@ const Game = () => {
                     return <p key={developer.id}>{developer.name}</p>;
                   })}
                   <p className="gameInfo-title">Age Rating</p>
-                  <p>{data.esrb_rating.name}</p>
+                  {data.esrb_rating ? <p>{data.esrb_rating.name}</p> : ""}
                 </div>
               </div>
               <div className="description-game">
@@ -129,9 +128,7 @@ const Game = () => {
 
           <div className="same-games">
             <h2>Games like {data.name}</h2>
-            <div>
-              <GamesOfTheSameSerie />
-            </div>
+            <GamesOfTheSameSerie />
           </div>
         </div>
       )}

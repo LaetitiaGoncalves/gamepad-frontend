@@ -35,7 +35,7 @@ const GamesOfTheSameSerie = () => {
                   <img src={games.background_image} alt="" />
                 </div>
                 <div className="background-similar-games">
-                  <p key={games.id}>{games.name}</p>
+                  <p>{games.name}</p>
                 </div>
               </div>
             );
