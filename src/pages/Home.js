@@ -43,9 +43,9 @@ const Home = () => {
           <div className="games-contain container">
             <h2>New Releases</h2>
             <div className="card-game">
-              {data.results.map((game) => {
+              {data.results.map((game, index) => {
                 return (
-                  <CardOfAGame game={game} />
+                  <CardOfAGame game={game} key={index} />
                   //   // composant card => avec state isshown (games en props)
                 );
               })}

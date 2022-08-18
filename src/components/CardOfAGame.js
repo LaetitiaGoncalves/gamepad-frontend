@@ -32,6 +32,7 @@ const CardOfAGame = ({ game }) => {
           "https://laetitia-gamepad-backend.herokuapp.com/game"
         );
         setData(response.data);
+
         setIsLoading(false);
       };
       fetchDatas();
@@ -56,11 +57,12 @@ const CardOfAGame = ({ game }) => {
           <img src={game.background_image} alt="" />
           <div className="game-infos">
             <div className="platform">
-              {game.parent_platforms.map((platform) => {
+              {game.parent_platforms.map((platform, index) => {
                 return (
                   <img
                     src={logoPlatform[platform.platform.name]}
                     alt={platform.platform.name}
+                    key={index}
                   />
                 );
               })}
