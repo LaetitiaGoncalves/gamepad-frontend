@@ -38,7 +38,7 @@ header a {
 text-decoration: none;
 }
 
-header button {
+.login-button{
     background-color:#FF4655;
     border-radius: 8px;
     padding: 5px 20px;
@@ -47,7 +47,22 @@ header button {
     color: white;
     font-family: 'Exo', sans-serif;
     border: none;
+    cursor: pointer;
 }
+
+.deconnexion-button {
+    background-color: transparent;
+    border: solid 2px #FF4655;
+    border-radius: 8px;
+    padding: 5px 20px;
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    font-family: 'Exo', sans-serif;
+    cursor: pointer;
+   
+}
+
 
 /* HOMEPAGE */
 
@@ -283,6 +298,7 @@ h1 {
     border-bottom-left-radius: 8px;
     padding: 30px 30px;
     border-right: 2px solid #FF4655;
+    height: 450px;
     }
 
 .howItWorks h2 {
@@ -310,7 +326,8 @@ margin-bottom: 45px;
     background-color: #333436;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    padding: 30px 30px 141px 30px;
+    padding: 30px 30px 30px 30px;
+    height: 450px;
 }
 
 .signup-card h1 {
@@ -322,12 +339,13 @@ margin-bottom: 45px;
     margin-bottom: 15px;
 }
 
-form {
+.signupPage form {
     display: flex;
     flex-direction: column;
     width: 300px;
+    height: 300px;
 }
-input {
+.signupPage input {
     border-radius: 8px;
     border: none;
     padding: 11px 0px 11px 22px;
@@ -393,6 +411,7 @@ input {
     line-height: 27px;
     text-align: center;
     margin-top: 28px;
+
 }
 
 .signupPage button {
@@ -403,13 +422,15 @@ input {
 font-weight: 400;
 font-size: 12px;
 line-height: 16px;
-text-decoration: underline;
+text-decoration: underline;  
+  cursor: pointer;
 }
 
 /* Login */
 
 .login-card {
-    padding: 30px 30px 190px 30px;
+    padding: 30px 30px 30px 30px;
+    height: 450px;
 }
 
 .login-card h1 {

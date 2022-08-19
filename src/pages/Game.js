@@ -132,6 +132,7 @@ const Game = () => {
           </div>
 
           <div className="same-games">
+            <h2>Games like {data.name}</h2>
             <GamesOfTheSameSerie />
           </div>
         </div>

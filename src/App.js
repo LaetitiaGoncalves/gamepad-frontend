@@ -1,4 +1,6 @@
 import "./App.css";
+import { useState } from "react";
+import Cookies from "js-cookie";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -21,15 +23,25 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("userToken") || null);
+
+  const setUser = (tokenToCheck) => {
+    if (tokenToCheck !== null) {
+      Cookies.set("userToken", tokenToCheck, { expires: 7 });
+    } else {
+      Cookies.remove("userToken");
+    }
+    setToken(tokenToCheck);
+  };
   library.add(faUser, faBookmark, faCommentDots);
   return (
     <div>
       <Router>
-        <Header />
+        <Header token={token} setUser={setUser} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup setUser={setUser} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/game/:id" element={<Game />} />
         </Routes>
         <Footer />

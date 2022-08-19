@@ -1,6 +1,32 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setUser }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await axios.post(
+        "https://laetitia-gamepad-backend.herokuapp.com/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
+      if (response.data.token) {
+        setUser(response.data.token);
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
     <div className="container signupPage">
       <div className="contain-card">
@@ -33,16 +59,30 @@ const Login = () => {
         </div>
         <div className="signup-card login-card">
           <h1>Login</h1>
-          <form>
-            <input type="email" placeholder="Email" />
-            <input type="password" name="" id="" placeholder="Password" />
+          <form onSubmit={handleLogin}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              name=""
+              id=""
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <div className="connexion">
               <label>
                 <input type="submit" style={{ display: "none" }} />
                 Connexion
               </label>
             </div>
-            <button>Don’t have an account yet ?</button>
+            <Link to="/signup">
+              <button>Don’t have an account yet ?</button>
+            </Link>
           </form>
         </div>
       </div>

@@ -1,7 +1,48 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import upload from "../img/upload.svg";
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    try {
+      if (password !== confirmPassword) {
+        setErrorPassword(true);
+        setErrorMessage("Mots de passe différents");
+      } else {
+        setErrorPassword(false);
+      }
+
+      const response = await axios.post(
+        "https://laetitia-gamepad-backend.herokuapp.com/signup",
+        {
+          email: email,
+          username: username,
+          password: password,
+        }
+      );
+      if (response.data) {
+        setUser(response.data.token);
+        navigate("/");
+      }
+    } catch (error) {
+      if (error.response.status === 409) {
+        setErrorMessage("Cet email a déjà un compte ! ");
+      }
+    }
+  };
+
   return (
     <div className="container signupPage">
       <div className="contain-card">
@@ -34,31 +75,86 @@ const Signup = () => {
         </div>
         <div className="signup-card">
           <h1>Sign Up</h1>
-          <form>
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="Email" />
-            <input type="password" name="" id="" placeholder="Password" />
-            <input
-              type="password"
-              name=""
-              id=""
-              placeholder="Confirm Password"
-            />
-            <div className="addPhoto">
-              <label>
-                <input type="file" style={{ display: "none" }} />
-                Add a Photo
-                <img src={upload} alt="upload icon" />
-              </label>
-              <p>No file selected</p>
-            </div>
-            <div className="connexion">
-              <label>
-                <input type="submit" style={{ display: "none" }} />
-                S'inscrire
-              </label>
-            </div>
-          </form>
+          {errorPassword ? (
+            ""
+          ) : (
+            <form onSubmit={handleSignup}>
+              <input
+                type="text"
+                placeholder="Username"
+                id="username"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {password === confirmPassword ? (
+                ""
+              ) : (
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#FF4655",
+                    padding: "5px 0px 10px 0px",
+                  }}
+                >
+                  Passwords did not match
+                </p>
+              )}
+              <div className="addPhoto">
+                <label>
+                  <input type="file" style={{ display: "none" }} />
+                  Add a Photo
+                  <img src={upload} alt="upload icon" />
+                </label>
+                <p>No file selected</p>
+              </div>
+
+              {username && email && password && confirmPassword ? (
+                ""
+              ) : (
+                <p
+                  style={{
+                    fontSize: "12px",
+                    color: "#FF4655",
+                    padding: "10px 0px",
+                  }}
+                >
+                  Please fill in all fields
+                </p>
+              )}
+              <div className="connexion">
+                <label>
+                  <input type="submit" style={{ display: "none" }} />
+                  S'inscrire
+                </label>
+                <p style={{ color: "red" }}>{errorMessage}</p>
+              </div>
+
+              <div></div>
+            </form>
+          )}
         </div>
       </div>
     </div>
