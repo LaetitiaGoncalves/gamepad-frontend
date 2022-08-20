@@ -39,10 +39,10 @@ function App() {
       <Router>
         <Header token={token} setUser={setUser} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home token={token} setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/game/:id" element={<Game />} />
+          <Route path="/game/:id" element={<Game token={token} />} />
         </Routes>
         <Footer />
       </Router>

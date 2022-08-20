@@ -8,25 +8,31 @@ import upload from "../img/upload.svg";
 const Signup = ({ setUser }) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState({});
+  const [preview, setPreview] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState("");
-  //   const [errorPassword, setErrorPassword] = useState(false);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSignup = async (event) => {
     event.preventDefault();
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+
     try {
       if (password !== confirmPassword) {
         console.log("if");
       } else {
-        if (email && username && password) {
+        if (email && username && password && avatar) {
           const response = await axios.post(
-            "https://laetitia-gamepad-backend.herokuapp.com/signup",
+            "https:/localhost:3000/signup",
+            formData,
             {
               email: email,
               username: username,
               password: password,
+              avatar: avatar,
             }
           );
           if (response.data) {
@@ -76,9 +82,6 @@ const Signup = ({ setUser }) => {
         </div>
         <div className="signup-card">
           <h1>Sign Up</h1>
-          {/* {errorPassword ? (
-            ""
-          ) : ( */}
           <form onSubmit={handleSignup}>
             <input
               type="text"
@@ -125,15 +128,29 @@ const Signup = ({ setUser }) => {
               </p>
             )}
             <div className="addPhoto">
-              <label>
-                <input type="file" style={{ display: "none" }} />
-                Add a Photo
-                <img src={upload} alt="upload icon" />
-              </label>
-              <p>No file selected</p>
+              {avatar ? (
+                <>
+                  <label>
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      onChange={(event) => {
+                        setAvatar(event.target.files[0]);
+                        setPreview(URL.createObjectURL(event.target.files[0]));
+                      }}
+                    />
+                    Choose your Avatar
+                    <img src={upload} alt="upload icon" />
+                  </label>
+
+                  <img src={preview} alt="" style={{ width: "50px" }} />
+                </>
+              ) : (
+                <p>No file selected</p>
+              )}
             </div>
             <div className="connexion">
-              <label>
+              <label style={{ cursor: "pointer" }}>
                 <input type="submit" style={{ display: "none" }} />
                 S'inscrire
               </label>

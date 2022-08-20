@@ -17,6 +17,7 @@ import GamesOfTheSameSerie from "../components/GamesOfTheSameSerie";
 const Game = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
   const { id } = useParams();
   const logoPlatform = {
     PC: microsoft,
@@ -83,11 +84,12 @@ const Game = () => {
                 <div className="left-infos">
                   <p className="gameInfo-title">Platforms</p>
                   <div className="platform">
-                    {data.parent_platforms.map((platform) => {
+                    {data.parent_platforms.map((platform, index) => {
                       return (
                         <img
                           src={logoPlatform[platform.platform.name]}
                           alt={platform.platform.name}
+                          key={index}
                         />
                       );
                     })}
@@ -96,16 +98,16 @@ const Game = () => {
                   <p className="gameInfo-title">Released date</p>
                   <p>{data.released}</p>
                   <p className="gameInfo-title">Publisher</p>
-                  {data.publishers.map((publisher) => {
-                    return <p key={publisher.id}>{publisher.name}</p>;
+                  {data.publishers.map((publisher, index) => {
+                    return <p key={index}>{publisher.name}</p>;
                   })}
                 </div>
                 <div className="rigth-infos">
                   <p className="gameInfo-title">Genres</p>
                   <div className="genres-game-info">
-                    {data.genres.map((genre) => {
+                    {data.genres.map((genre, index) => {
                       return (
-                        <p key={genre.id} className="gameInfo">
+                        <p key={index} className="gameInfo">
                           {genre.name}
                         </p>
                       );
@@ -113,8 +115,8 @@ const Game = () => {
                   </div>
 
                   <p className="gameInfo-title">Developer</p>
-                  {data.developers.map((developer) => {
-                    return <p key={developer.id}>{developer.name}</p>;
+                  {data.developers.map((developer, index) => {
+                    return <p key={index}>{developer.name}</p>;
                   })}
                   <p className="gameInfo-title">Age Rating</p>
                   {data.esrb_rating ? <p>{data.esrb_rating.name}</p> : ""}
@@ -133,7 +135,7 @@ const Game = () => {
 
           <div className="same-games">
             <h2>Games like {data.name}</h2>
-            <GamesOfTheSameSerie />
+            <GamesOfTheSameSerie id={id} />
           </div>
         </div>
       )}

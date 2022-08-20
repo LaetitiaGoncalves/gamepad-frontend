@@ -379,12 +379,12 @@ margin-bottom: 45px;
 .addPhoto label{
     background-color: white;
     border-radius: 8px;
-    padding: 11px 0px 11px 22px;
+    padding: 11px 0px 11px 11px;
     font-family: 'Exo', sans-serif;
     color: #757575;
-    width: 130px;
+    width: 145px;
     margin-right: 15px;
-    font-size: 12px;   
+    font-size: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -414,6 +414,7 @@ margin-bottom: 45px;
     cursor: pointer;
 
 }
+
 
 .signupPage button {
     background-color: transparent;
@@ -594,20 +595,29 @@ color: #676767;
     display: flex;
     margin-top: 30px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 100px;
 
 }
 
 .similar-games > div{
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 200px;
-    justify-content: center;
     align-items: center;
     margin-bottom: 50px;
-    
+    overflow-y: scroll;
+}
+
+.similar-games > div::-webkit-scrollbar {
+    display: none;
+  }
+
+.similar-games > div > div {
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.similar-games > div > div:not(:last-child) {
+    padding-right: 10px;
 }
 
 .similar-games p {
@@ -628,6 +638,7 @@ color: #676767;
 .background-similar-games {
     background-color: #323232;
     width: 265px;
+    height: 65px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }

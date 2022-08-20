@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const GamesOfTheSameSerie = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -22,28 +23,36 @@ const GamesOfTheSameSerie = () => {
     }
   }, [id]);
 
-  <div>
-    {isLoading === true ? (
-      <p>Encours de chargement</p>
-    ) : (
-      <div className="similar-games">
-        <div>
-          {data.results.map((games) => {
-            return (
-              <div>
-                <div>
-                  <img src={games.background_image} alt="" />
+  return (
+    <div className="container">
+      {isLoading === true ? (
+        <p>Encours de chargement</p>
+      ) : (
+        <div className="similar-games">
+          <div>
+            {data.results.map((games, index) => {
+              return (
+                <div
+                  key={index}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigate(`/game/${games.id}`);
+                  }}
+                >
+                  <div>
+                    <img src={games.background_image} alt="" />
+                  </div>
+                  <div className="background-similar-games">
+                    <p>{games.name}</p>
+                  </div>
                 </div>
-                <div className="background-similar-games">
-                  <p>{games.name}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
-    )}
-  </div>;
+      )}
+    </div>
+  );
 };
 
 export default GamesOfTheSameSerie;
