@@ -1,5 +1,5 @@
-import { useState, useParams } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import axios from "axios";
 
@@ -14,7 +14,7 @@ const Review = ({ data, token, setUser }) => {
       event.preventDefault();
 
       const response = await axios.post(
-        `http://localhost:3000/game/${id}/review/publish`,
+        `http://localhost:3000/game/${id}/review`,
         {
           title: data.title,
           description: data.description,
@@ -29,10 +29,10 @@ const Review = ({ data, token, setUser }) => {
       if (!token) {
         navigate("/login");
       } else {
-        setUser(response.data.user.username);
+        setTitle(response.data.title);
+        setDescription(response.data.description);
+        console.log(response.data);
       }
-
-      console.log(data);
     } catch (error) {
       console.log(error.response);
     }

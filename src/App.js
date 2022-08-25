@@ -49,10 +49,7 @@ function App() {
             path="/game/:id"
             element={<Game setUser={setUser} token={token} />}
           />
-          <Route
-            path="/game/:id/review/publish"
-            element={<Review token={token} />}
-          />
+          <Route path="/game/:id/review" element={<Review token={token} />} />
         </Routes>
         <Footer />
       </Router>
