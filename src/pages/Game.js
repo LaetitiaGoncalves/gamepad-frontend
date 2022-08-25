@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import microsoft from "../img/microsoft1.svg";
 import playstation from "../img/playstation-logotype.svg";
@@ -13,12 +13,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // component
 
 import GamesOfTheSameSerie from "../components/GamesOfTheSameSerie";
+import Reviews from "../components/Reviews";
+import Favorite from "../components/Favorite";
 
-const Game = () => {
+const Game = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
+
   const logoPlatform = {
     PC: microsoft,
     "PlayStation 5": playstation,
@@ -33,13 +36,13 @@ const Game = () => {
     iOS: apple,
     Android: android,
   };
-
   useEffect(() => {
     try {
       const fetchDatas = async () => {
         const response = await axios.get(
           `https://laetitia-gamepad-backend.herokuapp.com/game/${id}`
         );
+
         setData(response.data);
         setIsLoading(false);
       };
@@ -63,22 +66,15 @@ const Game = () => {
 
             <div className="right-part-game">
               <div className="buttons-game">
-                <div>
-                  <p>
-                    Save to <span style={{ color: "#6CC848" }}>Collection</span>
-                  </p>
-                  <FontAwesomeIcon
-                    icon="fa-regular fa-bookmark"
-                    style={{ fontSize: "18px" }}
-                  />
-                </div>
-                <div>
+                <Favorite data={data} token={token} />
+
+                <Link to="/game/:id/review/publish">
                   <p> Add a Review</p>
                   <FontAwesomeIcon
                     icon="fa-regular fa-comment-dots"
                     style={{ fontSize: "18px" }}
                   />
-                </div>
+                </Link>
               </div>
               <div className="infos-game">
                 <div className="left-infos">
@@ -136,6 +132,10 @@ const Game = () => {
           <div className="same-games">
             <h2>Games like {data.name}</h2>
             <GamesOfTheSameSerie id={id} />
+          </div>
+          <div className="reviews">
+            <h2>Most Relevant Reviews</h2>
+            <Reviews />
           </div>
         </div>
       )}

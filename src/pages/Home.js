@@ -6,12 +6,18 @@ import CardOfAGame from "../components/CardOfAGame";
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  };
 
   useEffect(() => {
     try {
       const fetchDatas = async () => {
         const response = await axios.get(
-          "https://laetitia-gamepad-backend.herokuapp.com/game"
+          `https://laetitia-gamepad-backend.herokuapp.com/game?title=${search}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -20,7 +26,7 @@ const Home = () => {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [search]);
   return (
     <div className="container homepage">
       {isLoading === true ? (
@@ -34,7 +40,11 @@ const Home = () => {
             </div>
             <div className="form-contain">
               <form>
-                <input type="search" placeholder="Search for a game " />
+                <input
+                  type="search"
+                  placeholder="Search for a game "
+                  onChange={handleSearch}
+                />
                 <button type="submit">Search</button>
               </form>
               <p>Search 2349 595 games</p>

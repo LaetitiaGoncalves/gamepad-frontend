@@ -16,6 +16,8 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Game from "./pages/Game";
+import Collection from "./pages/Collection";
+import Review from "./pages/Review";
 
 // Components
 
@@ -42,7 +44,15 @@ function App() {
           <Route path="/" element={<Home token={token} setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/game/:id" element={<Game token={token} />} />
+          <Route path="/collection" element={<Collection token={token} />} />
+          <Route
+            path="/game/:id"
+            element={<Game setUser={setUser} token={token} />}
+          />
+          <Route
+            path="/game/:id/review/publish"
+            element={<Review token={token} />}
+          />
         </Routes>
         <Footer />
       </Router>
