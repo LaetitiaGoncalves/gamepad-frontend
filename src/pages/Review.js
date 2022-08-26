@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import axios from "axios";
 
-const Review = ({ data, token, setUser }) => {
+const Review = ({ data, token }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const { id } = useParams();
@@ -14,10 +14,11 @@ const Review = ({ data, token, setUser }) => {
       event.preventDefault();
 
       const response = await axios.post(
-        `http://localhost:3000/game/${id}/review`,
+        `http://localhost:3000/game/review/publish/${id}`,
         {
-          title: data.title,
-          description: data.description,
+          title: title,
+          description: description,
+          gameId: id,
         },
         {
           headers: {

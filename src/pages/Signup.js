@@ -19,20 +19,21 @@ const Signup = ({ setUser }) => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("avatar", avatar);
-
+    formData.append("username", username);
+    formData.append("email", email);
+    formData.append("password", password);
     try {
       if (password !== confirmPassword) {
         console.log("if");
       } else {
         if (email && username && password && avatar) {
           const response = await axios.post(
-            "https:/localhost:3000/signup",
+            "http://localhost:3000/signup",
             formData,
             {
-              email: email,
-              username: username,
-              password: password,
-              avatar: avatar,
+              headers: {
+                "Content-type": "multipart/form-data",
+              },
             }
           );
           if (response.data) {

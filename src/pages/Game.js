@@ -68,7 +68,7 @@ const Game = ({ token }) => {
               <div className="buttons-game">
                 <Favorite data={data} token={token} />
 
-                <Link to={{ pathname: `/game/${id}/review` }}>
+                <Link to={{ pathname: `/game/review/publish/${id}` }}>
                   <p> Add a Review</p>
                   <FontAwesomeIcon
                     icon="fa-regular fa-comment-dots"
@@ -135,7 +135,7 @@ const Game = ({ token }) => {
           </div>
           <div className="reviews">
             <h2>Most Relevant Reviews</h2>
-            <Reviews />
+            <Reviews id={id} />
           </div>
         </div>
       )}
