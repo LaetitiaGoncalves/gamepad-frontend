@@ -18,7 +18,6 @@ const Review = ({ data, token, setUser }) => {
         {
           title: data.title,
           description: data.description,
-          user: data.user.username,
         },
         {
           headers: {
