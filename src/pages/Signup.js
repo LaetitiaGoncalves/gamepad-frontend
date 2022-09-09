@@ -24,7 +24,6 @@ const Signup = ({ setUser }) => {
     formData.append("password", password);
     try {
       if (password !== confirmPassword) {
-        console.log("if");
       } else {
         if (email && username && password && avatar) {
           const response = await axios.post(
@@ -114,7 +113,6 @@ const Signup = ({ setUser }) => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {/* ternaire dans la balise p */}
             {password === confirmPassword ? (
               ""
             ) : (

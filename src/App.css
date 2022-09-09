@@ -439,6 +439,10 @@ text-decoration: underline;
     margin-top: 100px;
 }
 
+.connexion label {
+    cursor: pointer;
+}
+
 /* Game */
 
 .game-page {
@@ -551,6 +555,7 @@ color: #676767;
     width: 110px;
     margin-bottom: 10px;
     height: 40px;
+    cursor: pointer;
 
 }
 
@@ -662,6 +667,7 @@ color: #676767;
    padding-bottom: 80px;
  
 }
+
 
 .collection h1 {
 font-size: 50px;

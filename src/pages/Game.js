@@ -65,7 +65,34 @@ const Game = ({ token }) => {
             </div>
 
             <div className="right-part-game">
-              <div className="buttons-game">
+              {token ? (
+                <div className="buttons-game">
+                  <Favorite data={data} token={token} />
+
+                  <Link to={{ pathname: `/game/review/publish/${id}` }}>
+                    <p> Add a Review</p>
+                    <FontAwesomeIcon
+                      icon="fa-regular fa-comment-dots"
+                      style={{ fontSize: "18px" }}
+                    />
+                  </Link>
+                </div>
+              ) : (
+                <div className="buttons-game">
+                  <Link to="/login">
+                    <p>Add to Favorites</p>
+                  </Link>
+
+                  <Link to="/login">
+                    <p> Add a Review</p>
+                    <FontAwesomeIcon
+                      icon="fa-regular fa-comment-dots"
+                      style={{ fontSize: "18px" }}
+                    />
+                  </Link>
+                </div>
+              )}
+              {/* <div className="buttons-game">
                 <Favorite data={data} token={token} />
 
                 <Link to={{ pathname: `/game/review/publish/${id}` }}>
@@ -75,7 +102,7 @@ const Game = ({ token }) => {
                     style={{ fontSize: "18px" }}
                   />
                 </Link>
-              </div>
+              </div> */}
               <div className="infos-game">
                 <div className="left-infos">
                   <p className="gameInfo-title">Platforms</p>

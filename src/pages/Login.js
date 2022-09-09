@@ -7,11 +7,12 @@ import { Link } from "react-router-dom";
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
+    event.preventDefault();
     try {
-      event.preventDefault();
       const response = await axios.post(
         "https://laetitia-gamepad-backend.herokuapp.com/login",
         {
@@ -22,8 +23,13 @@ const Login = ({ setUser }) => {
       if (response.data.token) {
         setUser(response.data.token);
         navigate("/");
+      } else {
+        alert("Une erreur est survenue, veuillez réssayer.");
       }
     } catch (error) {
+      if (error.response.status === 401 || error.response.status === 400) {
+        setErrorMessage("Email or password invalid");
+      }
       console.log(error.message);
     }
   };
@@ -64,7 +70,10 @@ const Login = ({ setUser }) => {
               type="email"
               placeholder="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setErrorMessage("");
+              }}
             />
             <input
               type="password"
@@ -74,6 +83,7 @@ const Login = ({ setUser }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <p style={{ fontSize: 12, color: "#FF4655" }}>{errorMessage}</p>
             <div className="connexion">
               <label>
                 <input type="submit" style={{ display: "none" }} />

@@ -27,13 +27,13 @@ import Footer from "./components/Footer";
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
 
-  const setUser = (tokenToCheck) => {
-    if (tokenToCheck !== null) {
-      Cookies.set("userToken", tokenToCheck, { expires: 7 });
+  const setUser = (token) => {
+    if (token !== null) {
+      Cookies.set("userToken", token, { expires: 7 });
     } else {
       Cookies.remove("userToken");
     }
-    setToken(tokenToCheck);
+    setToken(token);
   };
   library.add(faUser, faBookmark, faCommentDots);
   return (
@@ -45,10 +45,7 @@ function App() {
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/collection" element={<Collection token={token} />} />
-          <Route
-            path="/game/:id"
-            element={<Game setUser={setUser} token={token} />}
-          />
+          <Route path="/game/:id" element={<Game token={token} />} />
           <Route
             path="/game/review/publish/:id"
             element={<Review token={token} />}
