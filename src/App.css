@@ -550,8 +550,11 @@ color: #676767;
 
 .buttons-container {
     display: flex;
-    justify-content: space-between;
-    width: 50%;
+
+}
+
+.buttons-container div:first-child{
+    margin-right: 5%;
 }
 
 .buttons-game {
@@ -1004,7 +1007,7 @@ h1 {
 .buttons-container {
     width: 100%;
     margin: 5% 0%;
-    justify-content: inherit;
+   
 }
 
 .buttons-container div:first-child {
