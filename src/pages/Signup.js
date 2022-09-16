@@ -27,7 +27,7 @@ const Signup = ({ setUser }) => {
       } else {
         if (email && username && password && avatar) {
           const response = await axios.post(
-            "http://localhost:3000/signup",
+            "https://laetitia-gamepad-backend.herokuapp.com/signup",
             formData,
             {
               headers: {

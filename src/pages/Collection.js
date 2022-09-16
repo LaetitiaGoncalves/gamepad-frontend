@@ -10,7 +10,9 @@ const Collection = () => {
   useEffect(() => {
     try {
       const fetchDatas = async () => {
-        const response = await axios.get("http://localhost:3000/collection");
+        const response = await axios.get(
+          "https://laetitia-gamepad-backend.herokuapp.com/collection"
+        );
 
         setData(response.data);
         setIsLoading(false);

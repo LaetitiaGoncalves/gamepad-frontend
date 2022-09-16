@@ -14,7 +14,7 @@ const Review = ({ data, token }) => {
       event.preventDefault();
 
       const response = await axios.post(
-        `http://localhost:3000/game/review/publish/${id}`,
+        `https://laetitia-gamepad-backend.herokuapp.com/game/review/publish/${id}`,
         {
           title: title,
           description: description,

@@ -10,7 +10,9 @@ const Reviews = () => {
   useEffect(() => {
     try {
       const fetchDatas = async () => {
-        const response = await axios.get(`http://localhost:3000/review/${id}`);
+        const response = await axios.get(
+          `https://laetitia-gamepad-backend.herokuapp.com/review/${id}`
+        );
 
         setData(response.data);
         console.log(response.data);

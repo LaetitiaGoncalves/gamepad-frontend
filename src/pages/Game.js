@@ -119,7 +119,10 @@ const Game = ({ token }) => {
                       style={{ color: "white", textDecoration: "none" }}
                     >
                       Add a
-                      <span style={{ color: "rgb(108, 200, 72)" }}>Review</span>
+                      <span style={{ color: "rgb(108, 200, 72)" }}>
+                        {" "}
+                        Review
+                      </span>
                       {/* <FontAwesomeIcon
                       icon="fa-regular fa-comment-dots"
                       style={{ fontSize: "18px" }}

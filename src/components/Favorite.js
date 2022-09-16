@@ -28,7 +28,7 @@ const Favorite = ({ data, token }) => {
         Cookies.set("bookmark", bookmark, { expires: 100 });
 
         const response = await axios.post(
-          "http://localhost:3000/games/favorite",
+          "https://laetitia-gamepad-backend.herokuapp.com/games/favorite",
           body,
           {
             headers: {
