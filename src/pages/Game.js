@@ -8,7 +8,7 @@ import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
 import android from "../img/android-logo.svg";
 import apple from "../img/apple-logo.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
 
@@ -65,7 +65,7 @@ const Game = ({ token }) => {
             </div>
 
             <div className="right-part-game">
-              {token ? (
+              {/* {token ? (
                 <div className="buttons-game">
                   <Favorite data={data} token={token} />
 
@@ -91,18 +91,43 @@ const Game = ({ token }) => {
                     />
                   </Link>
                 </div>
-              )}
-              {/* <div className="buttons-game">
-                <Favorite data={data} token={token} />
+              )} */}
+              <div className="buttons-container">
+                <div className="buttons-game">
+                  <Favorite data={data} token={token} />
+                </div>
 
-                <Link to={{ pathname: `/game/review/publish/${id}` }}>
-                  <p> Add a Review</p>
-                  <FontAwesomeIcon
-                    icon="fa-regular fa-comment-dots"
-                    style={{ fontSize: "18px" }}
-                  />
-                </Link>
-              </div> */}
+                <div className="buttons-game">
+                  {token ? (
+                    <Link
+                      to={{ pathname: `/game/review/publish/${id}` }}
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      Add a
+                      <span style={{ color: "rgb(108, 200, 72)" }}>
+                        {" "}
+                        Review
+                      </span>
+                      {/* <FontAwesomeIcon
+                      icon="fa-regular fa-comment-dots"
+                      style={{ fontSize: "18px" }}
+                    /> */}
+                    </Link>
+                  ) : (
+                    <Link
+                      to={{ pathname: `/login` }}
+                      style={{ color: "white", textDecoration: "none" }}
+                    >
+                      Add a
+                      <span style={{ color: "rgb(108, 200, 72)" }}>Review</span>
+                      {/* <FontAwesomeIcon
+                      icon="fa-regular fa-comment-dots"
+                      style={{ fontSize: "18px" }}
+                    /> */}
+                    </Link>
+                  )}
+                </div>
+              </div>
               <div className="infos-game">
                 <div className="left-infos">
                   <p className="gameInfo-title">Platforms</p>

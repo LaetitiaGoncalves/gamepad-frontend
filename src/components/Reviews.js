@@ -13,8 +13,8 @@ const Reviews = () => {
         const response = await axios.get(`http://localhost:3000/review/${id}`);
 
         setData(response.data);
-        setIsLoading(false);
         console.log(response.data);
+        setIsLoading(false);
       };
       fetchDatas();
     } catch (error) {
@@ -25,19 +25,27 @@ const Reviews = () => {
   return (
     <div>
       {isLoading === true ? (
-        <p>En cours de chargement</p>
+        ""
       ) : (
         <div>
-          {data.map((review, index) => {
-            return (
-              <div key={index}>
-                <div>
-                  <p>{review.title}</p>
-                  <p>{review.description}</p>
-                </div>
-              </div>
-            );
-          })}
+          {!data.length ? (
+            <p style={{ marginBottom: 40 }}>No reviews yet</p>
+          ) : (
+            <div>
+              {data.map((review, index) => {
+                return (
+                  <div key={index} className="relevant-reviews">
+                    <p className="reviews-title">{review.title}</p>
+                    <p className="reviews-description">{review.description}</p>
+                    <p className="reviews-username">
+                      <span>Written by </span>
+                      {review.user.username}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>

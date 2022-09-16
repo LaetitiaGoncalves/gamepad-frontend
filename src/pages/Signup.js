@@ -56,27 +56,18 @@ const Signup = ({ setUser }) => {
         <div className="howItWorks">
           <h2>How it Works ?</h2>
           <div className="user">
-            <FontAwesomeIcon
-              icon="fa-regular fa-user"
-              style={{ fontSize: "25px" }}
-            />
+            <FontAwesomeIcon icon="fa-regular fa-user" />
             <p>
               Log in to your free account to be able to get all features of
               Gamepad
             </p>
           </div>
           <div className="user">
-            <FontAwesomeIcon
-              icon="fa-regular fa-bookmark"
-              style={{ fontSize: "25px" }}
-            />
+            <FontAwesomeIcon icon="fa-regular fa-bookmark" />
             <p>Add a game to your collection</p>
           </div>
           <div className="user">
-            <FontAwesomeIcon
-              icon="fa-regular fa-comment-dots"
-              style={{ fontSize: "25px" }}
-            />
+            <FontAwesomeIcon icon="fa-regular fa-comment-dots" />
             <p>Leave a review for a game</p>
           </div>
         </div>

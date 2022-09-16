@@ -45,7 +45,10 @@ function App() {
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/collection" element={<Collection token={token} />} />
-          <Route path="/game/:id" element={<Game token={token} />} />
+          <Route
+            path="/game/:id"
+            element={<Game token={token} setUser={setUser} />}
+          />
           <Route
             path="/game/review/publish/:id"
             element={<Review token={token} />}

@@ -31,6 +31,8 @@ const Review = ({ data, token }) => {
       } else {
         setTitle(response.data.title);
         setDescription(response.data.description);
+        navigate(`/game/${id}`);
+
         console.log(response.data);
       }
     } catch (error) {
@@ -39,17 +41,22 @@ const Review = ({ data, token }) => {
   };
 
   return (
-    <div>
+    <div className="container review-container">
+      <h1>Add a Review !</h1>
       <form onSubmit={handleSubmit}>
+        <h2>Title</h2>
         <input
           type="text"
           name="Review title"
+          placeholder="The best game of 2022..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <input
-          type="textarea"
+        <h2>Description</h2>
+        <textarea
+          maxLength={500}
           name="Review text"
+          placeholder="I appreciate the gameplay and the the visual style. I hope that developpers will unlock multiplayer soon..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />

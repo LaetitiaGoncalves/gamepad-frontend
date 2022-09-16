@@ -15,6 +15,7 @@ const GamesOfTheSameSerie = () => {
           `https://laetitia-gamepad-backend.herokuapp.com/samegames/${id}`
         );
         setData(response.data);
+        console.log(response.data);
         setIsLoading(false);
       };
       fetchDatas();
@@ -24,31 +25,35 @@ const GamesOfTheSameSerie = () => {
   }, [id]);
 
   return (
-    <div className="container">
+    <div>
       {isLoading === true ? (
         <p>Encours de chargement</p>
       ) : (
         <div className="similar-games">
-          <div>
-            {data.results.map((games, index) => {
-              return (
-                <div
-                  key={index}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    navigate(`/game/${games.id}`);
-                  }}
-                >
-                  <div>
-                    <img src={games.background_image} alt="" />
+          {data.results.length === 0 ? (
+            <p style={{ padding: "0 0" }}>No similar games</p>
+          ) : (
+            <div>
+              {data.results.map((games, index) => {
+                return (
+                  <div
+                    key={index}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/game/${games.id}`);
+                    }}
+                  >
+                    <div>
+                      <img src={games.background_image} alt="" />
+                    </div>
+                    <div className="background-similar-games">
+                      <p>{games.name}</p>
+                    </div>
                   </div>
-                  <div className="background-similar-games">
-                    <p>{games.name}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>

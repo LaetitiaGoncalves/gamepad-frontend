@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import microsoft from "../img/microsoft1.svg";
 import playstation from "../img/playstation-logotype.svg";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const CardOfAGame = ({ game }) => {
   const [isShown, setIsShown] = useState(false);
+
   const navigate = useNavigate();
   const logoPlatform = {
     PC: microsoft,
@@ -22,19 +23,33 @@ const CardOfAGame = ({ game }) => {
     iOS: apple,
     Android: android,
   };
+  useEffect(() => {
+    try {
+      if (window.innerWidth < 885) {
+        setIsShown(true);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, []);
 
   return (
     <div>
       <div
         className="game-card"
-        onMouseEnter={() => setIsShown(true)}
-        onMouseLeave={() => setIsShown(false)}
+        onMouseEnter={() => {
+          setIsShown(true);
+        }}
+        onMouseLeave={() => {
+          setIsShown(false);
+        }}
         onClick={(event) => {
           event.preventDefault();
           navigate(`/game/${game.id}`);
         }}
       >
         <img src={game.background_image} alt="" />
+
         <div className="game-infos">
           <div className="platform">
             {game.parent_platforms.map((platform, index) => {
@@ -55,6 +70,7 @@ const CardOfAGame = ({ game }) => {
             )}
           </div>
         </div>
+
         <h3>{game.name}</h3>
         {isShown && (
           <div className="card-opened">
