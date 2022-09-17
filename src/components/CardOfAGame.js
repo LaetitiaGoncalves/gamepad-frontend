@@ -7,12 +7,14 @@ import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
 import android from "../img/android-logo.svg";
 import apple from "../img/apple-logo.svg";
+import ios from "../img/apple-ios.svg";
 import { useNavigate } from "react-router-dom";
 
 const CardOfAGame = ({ game }) => {
   const [isShown, setIsShown] = useState(false);
 
   const navigate = useNavigate();
+
   const logoPlatform = {
     PC: microsoft,
     PlayStation: playstation,
@@ -20,9 +22,10 @@ const CardOfAGame = ({ game }) => {
     Nintendo: nintendo,
     Linux: linux,
     "Apple Macintosh": apple,
-    iOS: apple,
+    iOS: ios,
     Android: android,
   };
+
   useEffect(() => {
     try {
       if (window.innerWidth < 885) {

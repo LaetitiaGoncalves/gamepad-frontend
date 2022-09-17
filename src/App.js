@@ -8,6 +8,8 @@ import {
   faUser,
   faBookmark,
   faCommentDots,
+  faCircleLeft,
+  faCircleRight,
 } from "@fortawesome/free-regular-svg-icons";
 
 // Pages
@@ -35,7 +37,7 @@ function App() {
     }
     setToken(token);
   };
-  library.add(faUser, faBookmark, faCommentDots);
+  library.add(faUser, faBookmark, faCommentDots, faCircleLeft, faCircleRight);
   return (
     <div>
       <Router>

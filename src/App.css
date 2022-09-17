@@ -148,22 +148,6 @@ h1 {
   }
   
 
-.logo-and-search button[type="submit"] {
-    text-indent: -999px;
-    overflow: hidden;
-    width: 40px;
-    padding: 0;
-    margin: 0;
-    border: 1px solid transparent;
-    border-radius: inherit;
-    background: transparent url("./img/loupe.svg") no-repeat center;
-    cursor: pointer;
-    position: relative;
-    left: 0px;
-    top: 0px
-    
-  }
-
   .logo-and-search input[type="search"]:focus {
     box-shadow: none;
     border-color: none;
@@ -289,6 +273,18 @@ h1 {
     content: ",";
 }
 
+.pagination button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0px;
+}
 
 
 /* Signup page */
