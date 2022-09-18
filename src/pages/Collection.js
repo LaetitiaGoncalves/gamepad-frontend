@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Collection = () => {
+const Collection = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -11,17 +11,23 @@ const Collection = () => {
     try {
       const fetchDatas = async () => {
         const response = await axios.get(
-          "https://laetitia-gamepad-backend.herokuapp.com/collection"
+          "https://laetitia-gamepad-backend.herokuapp.com/collection",
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
         );
-
-        setData(response.data);
-        setIsLoading(false);
+        if (token) {
+          setData(response.data);
+          setIsLoading(false);
+        }
       };
       fetchDatas();
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [token]);
 
   return (
     <div className="container collection">
@@ -30,21 +36,27 @@ const Collection = () => {
         <p>encours de chargement</p>
       ) : (
         <div className="collection-container">
-          {data.map((collection, index) => {
-            return (
-              <div
-                key={index}
-                className="game-card"
-                onClick={(event) => {
-                  event.preventDefault();
-                  navigate(`/game/${collection.id}`);
-                }}
-              >
-                <img src={collection.image} alt="" />
-                <h3>{collection.name}</h3>
-              </div>
-            );
-          })}
+          {token ? (
+            <>
+              {data.map((collection, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="game-card"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigate(`/game/${collection.id}`);
+                    }}
+                  >
+                    <img src={collection.image} alt="" />
+                    <h3>{collection.name}</h3>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <p>Aucun favoris dans votre collection</p>
+          )}
         </div>
       )}
     </div>
