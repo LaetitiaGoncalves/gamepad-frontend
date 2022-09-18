@@ -56,7 +56,7 @@ const Home = () => {
     try {
       const fetchDatas = async () => {
         const response = await axios.get(
-          `http://localhost:3000/game?page=${page}&search=${wordEntered}`
+          `https://laetitia-gamepad-backend.herokuapp.com/game?page=${page}&search=${wordEntered}`
         );
         window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
         setData(response.data);
