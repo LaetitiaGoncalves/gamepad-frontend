@@ -55,7 +55,7 @@ const Collection = ({ token }) => {
               })}
             </>
           ) : (
-            <p>Aucun favoris dans votre collection</p>
+            <p>No favorites yet !</p>
           )}
         </div>
       )}

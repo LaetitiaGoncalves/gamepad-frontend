@@ -8,6 +8,7 @@ import nintendo from "../img/nintendo-switch.svg";
 import linux from "../img/linux-logo.svg";
 import android from "../img/android-logo.svg";
 import apple from "../img/apple-logo.svg";
+import ios from "../img/apple-ios.svg";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // component
@@ -30,10 +31,10 @@ const Game = ({ token }) => {
     "Xbox One": xbox,
     "Xbox Series S/X": xbox,
     Xbox: xbox,
-    "Nintendo Switch": nintendo,
+    Nintendo: nintendo,
     Linux: linux,
     "Apple Macintosh": apple,
-    iOS: apple,
+    iOS: ios,
     Android: android,
   };
   useEffect(() => {

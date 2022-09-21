@@ -688,6 +688,7 @@ color: #676767;
     height: 18px;
     border-radius: 0px;
     margin: 0px 10px 0px 0px;
+    object-fit: contain;
     
   }
 
