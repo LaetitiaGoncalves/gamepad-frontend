@@ -22,6 +22,9 @@ textarea {
     border: none;
 }
 
+.loading {
+    padding: 10% 0;
+}
 
 /* Header */
 

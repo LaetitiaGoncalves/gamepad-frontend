@@ -71,7 +71,9 @@ const Home = () => {
   return (
     <div className="container homepage">
       {isLoading === true ? (
-        <p>En cours de chargement</p>
+        <p className="loading">
+          Vos jeux sont en cours de chargement, patience !
+        </p>
       ) : (
         <div>
           <div className="logo-and-search">
