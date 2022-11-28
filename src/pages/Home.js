@@ -70,29 +70,30 @@ const Home = () => {
 
   return (
     <div className="container homepage">
+      <div className="logo-and-search">
+        <div className="symbol-and-title">
+          <img src={symbol} alt="symbol logo" />
+          <h1 id="top-page">Gamepad</h1>
+        </div>
+        <div className="form-contain">
+          <form>
+            <input
+              type="text"
+              placeholder="Search for a Game..."
+              value={wordEntered}
+              onChange={handleFilter}
+            />
+          </form>
+          <p>Search 2349 595 games</p>
+        </div>
+      </div>
+
       {isLoading === true ? (
         <p className="loading">
           Vos jeux sont en cours de chargement, patience !
         </p>
       ) : (
         <div>
-          <div className="logo-and-search">
-            <div className="symbol-and-title">
-              <img src={symbol} alt="symbol logo" />
-              <h1 id="top-page">Gamepad</h1>
-            </div>
-            <div className="form-contain">
-              <form>
-                <input
-                  type="text"
-                  placeholder="Search for a Game..."
-                  value={wordEntered}
-                  onChange={handleFilter}
-                />
-              </form>
-              <p>Search 2349 595 games</p>
-            </div>
-          </div>
           <div className="games-contain container">
             <h2>Most Relevance Games</h2>
             {filteredData.length !== 0 ? (

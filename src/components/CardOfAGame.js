@@ -55,11 +55,11 @@ const CardOfAGame = ({ game }) => {
 
         <div className="game-infos">
           <div className="platform">
-            {game.parent_platforms.map((platform, index) => {
+            {game.parent_platforms?.map((platforms, index) => {
               return (
                 <img
-                  src={logoPlatform[platform.platform.name]}
-                  alt={platform.platform.name}
+                  src={logoPlatform[platforms.platform.name]}
+                  alt={platforms.platform.name}
                   key={index}
                 />
               );
